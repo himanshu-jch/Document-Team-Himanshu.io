@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="centeruset-up-grafana--prometheus-and-blackbox-exporter-ucenter"><center><u>Set up Grafana , Prometheus and Blackbox Exporter </u></center></h1>
+<h5 id="utable-of-content-u"><u>Table of Content </u></h5>
+<p><a href="#1-definition-of-grafana--prometheus-and-blackbox-exporter">1 - Definition of Grafana , Prometheus and Blackbox Exporter</a></p>
+<p><a href="#2-how-to-set-up-grafana--prometheus-and-blackbox-exporter-on-podman-container">2 - How to set up Grafana , Prometheus and Blackbox Exporter on Podman Container ?
+</a></p>
+<h3 id="1-definition-of-grafana--prometheus-and-blackbox-exporter">1. Definition of Grafana , Prometheus  and Blackbox Exporter</h3>
+<p><strong><center>a. Grafana</strong>: Grafana is an open-source analytics and monitoring platform that integrates with various data sources, allowing users to visualize and understand metrics through customizable dashboards.</center></p>
+<p><strong><center>b. Prometheus:</strong> Prometheus is an open-source monitoring and alerting toolkit designed for reliability and scalability. It collects and stores time-series data, offering powerful querying and alerting capabilities.</center></p>
+<p><strong><center>c. Blackbox Exporter:</strong> Blackbox Exporter is a Prometheus exporter designed for probing and monitoring external services. It allows users to check the availability and response of endpoints, such as HTTP, TCP, ICMP, and DNS, and generates metrics based on the results.</center></p>
+<h3 id="2-how-to-set-up-grafana--prometheus-and-blackbox-exporter-on-podman-container">2. How to set up Grafana , Prometheus and Blackbox Exporter on Podman Container ?</h3>
+<h4 id="system-requirement"><strong>System Requirement</strong></h4>
+<ul>
+<li>
+<p><strong>Distributor ID:	Ubuntu</strong>
+<strong>Description:	Ubuntu 22.04.3 LTS</strong>
+<strong>Release:	22.04</strong>
+<strong>Codename:	jammy</strong></p>
+</li>
+<li>
+<p><strong>podman version 3.4.4</strong></p>
+</li>
+</ul>
+<h4 id="step-1--first-we-will-update-and-upgrade-our-system">Step 1 . First, we will update and upgrade our system.</h4>
+<ul>
+<li><code>sudo apt update</code></li>
+</ul>
+<p><img src="33.png" alt=""></p>
+<ul>
+<li><code>sudo apt upgrade</code></li>
+</ul>
+<p><img src="34.png" alt=""></p>
+<h4 id="step-2--create-file-and-folder-regarding-this-set-up">Step 2 .   Create File and Folder regarding this set up .</h4>
+<ul>
+<li>
+<p><code>mkdir grafana</code></p>
+</li>
+<li>
+<p><code>cd grafana</code></p>
+</li>
+<li>
+<p><code>touch prometheus.yml</code></p>
+</li>
+<li>
+<p><code>touch config.yml</code></p>
+</li>
+<li>
+<p><code>ls</code> : <strong>Check List</strong></p>
+</li>
+</ul>
+<p><img src="10.png" alt=""></p>
+<h4 id="step-3--paste-code-in-prometheusyml-and-configyml-file">Step 3 . Paste code in prometheus.yml and config.yml file .</h4>
+<ul>
+<li><code>vim prometheus.yml</code></li>
+</ul>
+<p><strong>Paste code in this configuration file .</strong></p>
+<pre><code>global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.1.113:9090', '192.168.1.113:9115']
+
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+
+    static_configs:
+      - targets:
+        - https://www.google.com  
+
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 192.168.1.113:9115     
+</code></pre>
+<p><img src="11.png" alt=""></p>
+<ul>
+<li><code>vim config.yml</code></li>
+</ul>
+<p><strong>Paste code in this configuration file .</strong></p>
+<pre><code>modules:
+  http_2xx:
+    prober: http
+  http_post_2xx:
+    prober: http
+    http:
+      method: POST
+  tcp_connect:
+    prober: tcp
+  pop3s_banner:
+    prober: tcp
+    tcp:
+      query_response:
+      - expect: &quot;^+OK&quot;
+      tls: true
+      tls_config:
+        insecure_skip_verify: false
+  grpc:
+    prober: grpc
+    grpc:
+      tls: true
+      preferred_ip_protocol: &quot;ip4&quot;
+  grpc_plain:
+    prober: grpc
+    grpc:
+      tls: false
+      service: &quot;service1&quot;
+  ssh_banner:
+    prober: tcp
+    tcp:
+      query_response:
+      - expect: &quot;^SSH-2.0-&quot;
+      - send: &quot;SSH-2.0-blackbox-ssh-check&quot;
+  irc_banner:
+    prober: tcp
+    tcp:
+      query_response:
+      - send: &quot;NICK prober&quot;
+      - send: &quot;USER prober prober prober :prober&quot;
+      - expect: &quot;PING :([^ ]+)&quot;
+        send: &quot;PONG ${1}&quot;
+      - expect: &quot;^:[^ ]+ 001&quot;
+  icmp:
+    prober: icmp
+  icmp_ttl5:
+    prober: icmp
+    timeout: 5s
+    icmp:
+      ttl: 5      
+</code></pre>
+<p><img src="12.png" alt=""></p>
+<p><img src="13.png" alt=""></p>
+<h4 id="step-4--run-the-container-prometheus-on-podman">Step 4 .  Run the container Prometheus on podman .</h4>
+<ul>
+<li><code>podman run -p 9090:9090 -v /home/himanshu/Desktop/grafana/prometheus.yml:/etc/prometheus/prometheus.yml /prom/prometheus</code></li>
+</ul>
+<p><img src="14.png" alt=""></p>
+<ul>
+<li>
+<p><strong>podman run:</strong> This is the basic command to run a container using Podman. Podman is a container management tool similar to Docker.</p>
+</li>
+<li>
+<p><strong>-p 9090:9090:</strong> This part of the command specifies port mapping. It maps port 9090 from the container to port 9090 on the host. This is typically done to allow external access to the service running inside the container on port 9090.</p>
+</li>
+<li>
+<p><strong>-v /home/himanshu/Desktop/grafana/prometheus.yml:/etc/prometheus/prometheus.yml:</strong> This part specifies a volume mount. It takes a file from the host system and mounts it into the container. In this case, it's taking the file located at /home/himanshu/Desktop/grafana/prometheus.yml on the host and mounting it into the container at <strong>/etc/prometheus/prometheus.yml</strong>. This is often used for configuration files, so the Prometheus configuration can be customized.</p>
+</li>
+<li>
+<p><strong>/prom/prometheus:</strong> This is the name of the container image that you want to run. In this case, it seems to be referring to a container image named &quot;prom/prometheus,&quot; which is likely an official Prometheus container image.</p>
+</li>
+<li>
+<p><code>podman images</code> : check images .</p>
+</li>
+</ul>
+<p><img src="17.png" alt=""></p>
+<ul>
+<li><code>podman ps</code> : check container .</li>
+</ul>
+<p><img src="20.png" alt=""></p>
+<ul>
+<li>show on Localhost : http://localhost:9090</li>
+</ul>
+<p><img src="5.png" alt=""></p>
+<h3 id="step-5--run-the-container-blackbox-exporter-on-podman">Step 5 .  Run the container Blackbox Exporter on podman  .</h3>
+<ul>
+<li><code>podman run -d --name black -p 9115:9115  bitnami/blackbox-exporter:latest</code></li>
+</ul>
+<p><img src="16.png" alt=""></p>
+<ul>
+<li>
+<p><strong>podman run:</strong> This is the basic command for running a container with Podman.</p>
+</li>
+<li>
+<p><strong>-d:</strong> This flag stands for &quot;detached&quot; mode, which means that the container will run in the background, and you'll get your terminal prompt back immediately.</p>
+</li>
+<li>
+<p><strong>--name black:</strong> This flag assigns a name &quot;black&quot; to the running container, allowing you to easily reference it by name instead of a container ID.</p>
+</li>
+<li>
+<p><strong>-p 9115:9115:</strong> This flag maps ports between the host and the container. In this case, it's mapping port 9115 on the host to port 9115 in the container. This is useful if the container is running a service that you want to access from your host machine.</p>
+</li>
+<li>
+<p><strong>bitnami/blackbox-exporter:latest:</strong> This is the name of the Docker image that you want to run as a container. It's specifying the image &quot;bitnami/blackbox-exporter&quot; with the &quot;latest&quot; tag, meaning the latest available version of that image.</p>
+</li>
+<li>
+<p><code>podman images</code> : check images .</p>
+</li>
+</ul>
+<p><img src="35.png" alt=""></p>
+<ul>
+<li><code>podman ps</code> : check container .</li>
+</ul>
+<p><img src="22.png" alt=""></p>
+<ul>
+<li>show on Localhost : http://localhost:9115</li>
+</ul>
+<p><img src="3.png" alt=""></p>
+<h4 id="step-6--run-the-container-grafana-on-podman">Step 6 .  Run the container Grafana on podman  .</h4>
+<ul>
+<li><code>podman run -d --name grafana -p 3000:3000 -e &quot;GF_SECURITY_ADMIN_PASSWORD=admin&quot; grafana/grafana</code></li>
+</ul>
+<p><img src="15.png" alt=""></p>
+<ul>
+<li>
+<p><strong>podman run:</strong> This is the command to run a container using Podman, a containerization tool similar to Docker.</p>
+</li>
+<li>
+<p><strong>-d:</strong> This flag stands for &quot;detached&quot; mode, which means that the container will run in the background as a daemon.</p>
+</li>
+<li>
+<p><strong>--name grafana:</strong> This flag assigns a name to the container, in this case, &quot;grafana.&quot; This name can be used to reference and manage the container.</p>
+</li>
+<li>
+<p><strong>-p 3000:3000</strong>: This flag is used to map ports between the host machine and the container. It specifies that port 3000 on the host should be mapped to port 3000 inside the Grafana container. This is important for accessing Grafana's web interface, as the Grafana server runs on port 3000 by default.</p>
+</li>
+<li>
+<p><strong>-e &quot;GF_SECURITY_ADMIN_PASSWORD=admin&quot;:</strong> This flag is used to set an environment variable within the container. In this case, it's setting the Grafana admin user's password to &quot;admin.&quot; This is a common initial setup step to secure your Grafana instance.</p>
+</li>
+<li>
+<p><strong>grafana/grafana:</strong> This is the name of the Docker image that you want to run. It specifies that you want to run the official Grafana Docker image from the &quot;grafana&quot; repository on Docker Hub.</p>
+</li>
+<li>
+<p><code>podman images</code> : check images .</p>
+</li>
+</ul>
+<p><img src="18.png" alt=""></p>
+<ul>
+<li><code>podman ps</code> : check container .</li>
+</ul>
+<p><img src="22.png" alt=""></p>
+<ul>
+<li>show on Localhost : http://localhost:3000</li>
+</ul>
+<p><img src="29.png" alt=""></p>
+<p><img src="30.png" alt=""></p>
+<h4 id="step-7--if-a-websites-url-returns-a-low-failure-response-then-in-this-situation-the-dashboard-will-be-down">Step 7 .  If a website's URL returns a low failure response, then in this situation, the dashboard will be down.</h4>
+<ul>
+<li><strong>Blackbox Exporter</strong></li>
+</ul>
+<p><img src="32.png" alt=""></p>
+<ul>
+<li><strong>Prometheus</strong></li>
+</ul>
+<p><img src="5.png" alt=""></p>
+<ul>
+<li><strong>Grafana</strong></li>
+</ul>
+<p><img src="31.png" alt=""></p>
+
+</body>
+</html>
