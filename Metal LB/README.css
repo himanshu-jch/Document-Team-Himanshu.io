@@ -1,0 +1,14 @@
+/* styles.css */
+.code-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+  }
+  
+  .copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  
